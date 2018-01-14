@@ -3,7 +3,6 @@ namespace SmartBuy\Api;
 
 class Api
 {
-
     /**
      * cookie lifetime in days
      * @var int
