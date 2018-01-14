@@ -1,0 +1,13 @@
+{
+  "name": "smartbuy/api",
+  "type": "library",
+  "description": "SmartBuy api library",
+  "keywords": ["smartbuy", "api"],
+  "autoload": {
+    "psr-0": { "SmartBuy\\Api\\": "src/" }
+  },
+  "require": {
+    "php": ">=5.4.0",
+    "ext-curl": "*"
+  }
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit colors="false" bootstrap="tests/bootstrap.php">
+    <php>
+        <const name="SMARTBUY API LIBRARY" value=""/>
+    </php>
+    <testsuites>
+        <testsuite name="SmartBuy Test Suite">
+            <directory suffix="Test.php">./tests/</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist>
+            <directory>./src</directory>
+        </whitelist>
+    </filter>
+</phpunit>
