@@ -26,18 +26,16 @@ class Api
         }
     }
 
-    public function registerOrder($accessToken, $referenceNumber, $amount, $status = 0, $rate = null)
+    public function registerOrder($referenceNumber, $amount, $rate = null)
     {
         if (empty($this->getReferral())) {
             return null;
         }
 
         $params = [
-            'accessToken' => $accessToken,
             'referralId' => $this->getReferral(),
             'referenceNumber' => $referenceNumber,
             'amount' => $amount,
-            'status' => $status,
             'rate' => $rate
         ];
 
@@ -51,6 +49,8 @@ class Api
 
     private function post($method, $params = [])
     {
+        $params['accessToken'] = $this->accessKey;
+
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $this->host . '/' . $method);
         curl_setopt($ch, CURLOPT_POST, 1);
