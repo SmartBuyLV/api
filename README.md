@@ -24,9 +24,9 @@ $api = new Smartbuy\Api\Api($accessToken, $cookieLifetimeInDays);
 $api->init(); 
 ```
 
-Register order
+Register order (Executes only if have detected affiliate ID)
 ```php
-$api = new Smartbuy\Api\Api($accessToken, $cookieLifetimeInDays);
+$api = new Smartbuy\Api\Api($accessToken);
 $api->registerOrder($orderUniqueNumber, $fullAmount, $rateId); // RateId is optional
 ```
 
