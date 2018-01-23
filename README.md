@@ -26,7 +26,7 @@ $api->init();
 
 Register order
 ```php
-$api = new Admitad\Api\Api($accessToken, $cookieLifetimeInDays);
+$api = new Smartbuy\Api\Api($accessToken, $cookieLifetimeInDays);
 $api->registerOrder($orderUniqueNumber, $fullAmount, $rateId); // RateId is optional
 ```
 
