@@ -8,21 +8,25 @@ class Api
      * @var int
      */
     private $cookieLifetime = 0;
+    private $cookieName = 'affiliate-smartbuy';
     private $accessKey;
     private $host = 'https://www.smartbuy.lv/api/v1';
 
-    function __construct($accessKey = null, $cookieLifetime = 0)
+    function __construct($accessKey = null, $cookieLifetime = 0, $cookieName = null)
     {
         $this->accessKey = $accessKey;
         if ($cookieLifetime) {
             $this->cookieLifetime = $cookieLifetime;
+        }
+        if ($cookieName) {
+            $this->cookieName = $cookieName;
         }
     }
 
     public function init()
     {
         if (!empty($_GET['affiliate-smartbuy'])) {
-            setcookie('smartbuy_referral', $_GET['affiliate-smartbuy'], strtotime('+' . $this->cookieLifetime . ' days'));
+            setcookie($this->cookieName, $_GET['affiliate-smartbuy'], strtotime('+' . $this->cookieLifetime . ' days'));
         }
     }
 
@@ -44,7 +48,7 @@ class Api
 
     private function getReferral()
     {
-        return (!empty($_COOKIE['smartbuy_referral']) ? (int)$_COOKIE['smartbuy_referral'] : 0);
+        return (!empty($_COOKIE[$this->cookieName]) ? (int)$_COOKIE[$this->cookieName] : 0);
     }
 
     private function post($method, $params = [])
