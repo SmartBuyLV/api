@@ -20,7 +20,7 @@ There are 2 common methods to communicate with api:
 
 Checks if have query parameter with affiliate ID and sets cookie
 ```php
-$api = new Smartbuy\Api\Api($accessToken, $cookieLifetimeInDays);
+$api = new Smartbuy\Api\Api($accessToken);
 $api->init(); 
 ```
 
