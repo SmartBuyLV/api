@@ -10,8 +10,7 @@ class Api
     private $cookieLifetime = 0;
     private $cookieName = 'affiliate-smartbuy';
     private $accessKey;
-    //private $host = 'https://www.smartbuy.lv/api/v1';
-    private $host = 'http://cashback.hmchoose.com/api/v1';
+    private $host = 'https://www.smartbuy.lv/api/v1';
 
     function __construct($accessKey = null, $cookieLifetime = 0, $cookieName = null)
     {
