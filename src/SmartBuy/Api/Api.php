@@ -30,33 +30,33 @@ class Api
         }
     }
 
-    public function orderRegister($referenceNumber, $products = [], $referralId = null)
+    public function orderRegister($referenceNumber, $products = array(), $referralId = null)
     {
         $referralId = ($referralId ? $referralId : $this->getReferral());
-        $params = [
+        $params = array(
             'referralId' => $referralId,
             'referenceNumber' => $referenceNumber,
             'products' => $products
-        ];
+        );
 
         return $this->call('orders', 'PUT', $params);
     }
 
     public function orderCancel($referenceNumber, $reason = null)
     {
-        $params = [
+        $params = array(
             'referenceNumber' => $referenceNumber,
             'reason' => $reason
-        ];
+        );
 
         return $this->call('orders', 'PATCH', $params);
     }
 
     public function orderDelete($referenceNumber)
     {
-        $params = [
+        $params = array(
             'referenceNumber' => $referenceNumber,
-        ];
+        );
 
         return $this->call('orders', 'DELETE', $params);
     }
@@ -69,12 +69,12 @@ class Api
             return null;
         }
 
-        $params = [
+        $params = array(
             'referralId' => $referralId,
             'referenceNumber' => $referenceNumber,
             'amount' => $amount,
             'rate' => $rate
-        ];
+        );
 
         return $this->post('order', $params);
     }
@@ -84,7 +84,7 @@ class Api
         return (!empty($_COOKIE[$this->cookieName]) ? (int)$_COOKIE[$this->cookieName] : 0);
     }
 
-    private function call($method, $request, $params = [])
+    private function call($method, $request, $params = array())
     {
 
         $params['accessToken'] = $this->accessKey;
@@ -94,10 +94,10 @@ class Api
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $request);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
             'Accept: application/json',
             'Content-type: application/json'
-        ]);
+        ));
 
         $return = curl_exec($ch);
         curl_close ($ch);
@@ -105,7 +105,7 @@ class Api
         return $return;
     }
 
-    private function post($method, $params = [])
+    private function post($method, $params = array())
     {
         $params['accessToken'] = $this->accessKey;
 
@@ -114,9 +114,9 @@ class Api
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
             'Accept: application/json'
-        ]);
+        ));
 
         $return = curl_exec($ch);
         curl_close ($ch);
