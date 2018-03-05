@@ -29,11 +29,13 @@ Register new order
 $products = [
     [
         'title' => 'Product #1',
-        'amount' => 10
+        'price' => 10,
+        'quantity' => 1
     ],
     [
         'title' => 'Product #2',
-        'amount' => 4,
+        'price' => 4,
+        'quantity' => 2,
         'rate' => 'SB1'
     ]
 ];
