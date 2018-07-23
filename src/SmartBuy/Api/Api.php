@@ -26,7 +26,8 @@ class Api
     public function init()
     {
         if (!empty($_GET['affiliate-smartbuy'])) {
-            setcookie($this->cookieName, $_GET['affiliate-smartbuy'], strtotime('+' . $this->cookieLifetime . ' days'));
+            $expireTime = $this->cookieLifetime > 0 ? strtotime('+' . $this->cookieLifetime . ' days') : 0;
+            setcookie($this->cookieName, $_GET['affiliate-smartbuy'], $expireTime);
         }
     }
 
